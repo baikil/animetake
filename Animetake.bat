@@ -198,4 +198,4 @@ goto menu
 ::[ ] Settings -> save/load (browser/theme)
 ::[ ] List tab -> add more anime/make multiple pages working
 ::[ ] List under category -> create a menu for the choice of #episode
-::[ ] Self update -> create file in %public% that overwrite %0 and start new version with -update to delete the file in %public%
+::[ ] Self update -> create file in %public% that overwrite %0 and start new version with -update to delete the file in %public% / create shortcut with animetake.ico
