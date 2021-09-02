@@ -1,8 +1,9 @@
 ::Edit with OEM encoding
-:reset
+:ini
 @echo off
-set logocolor=220
-set "browser=cd %LocalAppData%\Programs\Opera GX & start launcher.exe"
+if not exist %public%\animetake\ (md %public%\animetake)
+if not exist %public%\animetake\settings.txt (call :makeset)
+call :loadset
 :logo
 title Animetake - Logo
 set "logo1=echo                                           ___          _                [38;5;%logocolor%m__        __         [0m"
@@ -108,6 +109,7 @@ choice /c 123 /n
 if %errorlevel% == 1 set "browser=start iexplore.exe"
 if %errorlevel% == 2 set "browser=start chrome.exe"
 if %errorlevel% == 3 set "browser=cd %LocalAppData%\Programs\Opera GX & start launcher.exe"
+call :editset
 goto menu
 :theme
 title Animetake - Theme
@@ -135,6 +137,7 @@ echo                                                      ศอออออออออออออออผ
 echo.
 echo.
 set /p "logocolor=[0m                                                      Color : "
+call :editset
 goto logo
 :about
 title Animetake - About
@@ -151,7 +154,7 @@ echo                                                        บ   ABOUT    บ
 echo                                                        ศออออออออออออผ
 echo.
 echo                                                    File name : Animetake.bat
-echo                                                      Version : 1.3
+echo                                                      Version : 1.4
 echo                                                File location : %0
 echo                                                      Made by : Baikil
 echo                                                       Github : https://github.com/baikil/animetake
@@ -162,8 +165,9 @@ echo                                           ^< Press any key to go back to th
 pause >nul
 goto menu
 :direct
-set /p "anime=[anime name] episode [#] : "
-%browser% https://animetake.tv/watch-online/%anime: =-%/
+set /p "animename=Anime name : "
+set /p "episodenum=Episode : "
+%browser% https://animetake.tv/watch-online/%animename: =-%-episode-%episode%/
 goto menu
 :list1
 title Animetake - List
@@ -187,15 +191,72 @@ echo                                                      บ6. RE:Zero        บ
 echo                                                      บ7. A Silent Voice บ
 echo                                                      บ8. AOT            บ
 echo                                                      บ9. Next page -^>   บ
+echo                                                      ฬออออออออออออออออออน
+echo                                                      บ       1/1        บ
 echo                                                      ศออออออออออออออออออผ
 echo.
-echo *Work in progress*
-pause
+choice /c 123456789 /n
+if %errorlevel% == 1 (goto listbkcl)
+if %errorlevel% == 2 (goto listopm)
+if %errorlevel% == 3 (goto listsao)
+if %errorlevel% == 4 (goto listhxh)
+if %errorlevel% == 5 (goto listjjk)
+if %errorlevel% == 6 (goto listrez)
+if %errorlevel% == 7 (goto listasv)
+if %errorlevel% == 8 (goto listaot)
+if %errorlevel% == 9 (goto list1)
+goto menu
+:loadset
+cd %public%\animetake
+for /f "delims== tokens=1,2" %%G in (settings.txt) do set "%%G=%%H"
+exit /b
+:makeset
+cd %public%\animetake
+echo logocolor=220>settings.txt
+echo browser=start chrome.exe>>settings.txt
+exit /b
+:editset
+cd %public%\animetake
+echo logocolor=%logocolor%>settings.txt
+echo browser=%browser%>>settings.txt
+exit /b
+:vartype
+set "var="&for /f "delims=0123456789" %%i in ("%1") do set var=%%i
+if defined var (set vartype=text) else (set vartype=num)
+exit /b
+:listbkcl
+title Animetake - List - Black Clover
+cls
+%logo1%
+%logo2%
+%logo3%
+%logo4%
+%logo5%
+echo.
+echo.
+echo                                                      ษออออออออออออออออออป
+echo                                                      บ   Black Clover   บ
+echo                                                      ฬออออออออออออออออออน
+echo                                                      บ1. Anime page     บ
+echo                                                      บ2. Select episode บ
+echo                                                      บ3. Back           บ
+echo                                                      ศออออออออออออออออออผ
+echo.
+choice /c 123 /n
+if %errorlevel% == 1 (%browser% )
+if %errorlevel% == 2 (goto :listbkclep)
+if %errorlevel% == 3 (goto list1)
+:listbkclep
+echo.
+set /p "episode=Episode : "
+call :vartype %episode%
+if %vartype% == text (goto :listbkclep)
+%browser% https://animetake.tv/watch-online/black-clover-episode-%episode%/
 goto menu
 
 ::To do :
 ::
-::[ ] Settings -> save/load (browser/theme)
+::[X] Settings -> save/load (browser/theme)
 ::[ ] List tab -> add more anime/make multiple pages working
 ::[ ] List under category -> create a menu for the choice of #episode
 ::[ ] Self update -> create file in %public% that overwrite %0 and start new version with -update to delete the file in %public% / create shortcut with animetake.ico
