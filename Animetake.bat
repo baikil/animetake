@@ -6,11 +6,11 @@ if not exist %public%\animetake\settings.txt (call :makeset)
 call :loadset
 :logo
 title Animetake - Logo
-set "logo1=echo                                           ___          _                [38;5;%logocolor%m__        __         [0m"
-set "logo2=echo                                          /   ^|  ____  (_)___ ___  ___  [38;5;%logocolor%m/ /_____ _/ /_____   [0m"
-set "logo3=echo                                         / /^| ^| / __ \/ / __ `__ \/ _ \[38;5;%logocolor%m/ __/ __ `/ //_/ _ \ [0m"
-set "logo4=echo                                        / ___ ^|/ / / / / / / / / /  __/[38;5;%logocolor%m /_/ /_/ / ,^< /  __/ [0m"
-set "logo5=echo                                       /_/  ^|_/_/ /_/_/_/ /_/ /_/\___/[38;5;%logocolor%m\__/\__,_/_/^|_^|\___/ [0m"
+set "logo1=echo [38;5;255m                                          ___          _                [38;5;%logocolor%m__        __         [0m"
+set "logo2=echo [38;5;255m                                         /   ^|  ____  (_)___ ___  ___  [38;5;%logocolor%m/ /_____ _/ /_____   [0m"
+set "logo3=echo [38;5;255m                                        / /^| ^| / __ \/ / __ `__ \/ _ \[38;5;%logocolor%m/ __/ __ `/ //_/ _ \ [0m"
+set "logo4=echo [38;5;255m                                       / ___ ^|/ / / / / / / / / /  __/[38;5;%logocolor%m /_/ /_/ / ,^< /  __/ [0m"
+set "logo5=echo [38;5;255m                                      /_/  ^|_/_/ /_/_/_/ /_/ /_/\___/[38;5;%logocolor%m\__/\__,_/_/^|_^|\___/ [0m"
 :menu
 MODE 130, 24
 title Animetake - Menu
