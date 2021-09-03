@@ -6,20 +6,17 @@ if not exist %public%\animetake\settings.txt (call :makeset)
 call :loadset
 :logo
 title Animetake - Logo
-set "logo1=echo [38;5;255m                                          ___          _                [38;5;%logocolor%m__        __         [0m"
-set "logo2=echo [38;5;255m                                         /   ^|  ____  (_)___ ___  ___  [38;5;%logocolor%m/ /_____ _/ /_____   [0m"
-set "logo3=echo [38;5;255m                                        / /^| ^| / __ \/ / __ `__ \/ _ \[38;5;%logocolor%m/ __/ __ `/ //_/ _ \ [0m"
-set "logo4=echo [38;5;255m                                       / ___ ^|/ / / / / / / / / /  __/[38;5;%logocolor%m /_/ /_/ / ,^< /  __/ [0m"
-set "logo5=echo [38;5;255m                                      /_/  ^|_/_/ /_/_/_/ /_/ /_/\___/[38;5;%logocolor%m\__/\__,_/_/^|_^|\___/ [0m"
+set "logo1=echo [38;5;255m                                          ___          _                [38;5;%logocolor%m__        __[0m"
+set "logo2=echo [38;5;255m                                         /   ^|  ____  (_)___ ___  ___  [38;5;%logocolor%m/ /_____ _/ /_____[0m"
+set "logo3=echo [38;5;255m                                        / /^| ^| / __ \/ / __ `__ \/ _ \[38;5;%logocolor%m/ __/ __ `/ //_/ _ \[0m"
+set "logo4=echo [38;5;255m                                       / ___ ^|/ / / / / / / / / /  __/[38;5;%logocolor%m /_/ /_/ / ,^< /  __/[0m"
+set "logo5=echo [38;5;255m                                      /_/  ^|_/_/ /_/_/_/ /_/ /_/\___/[38;5;%logocolor%m\__/\__,_/_/^|_^|\___/[0m"
+set "logo6=echo [38;5;240m                                                                                     v1.6[0m"
+set "logo=cls&%logo1%&%logo2%&%logo3%&%logo4%&%logo5%&%logo6%"
 :menu
 MODE 130, 24
 title Animetake - Menu
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                        ษอออออออออออออป
@@ -45,16 +42,11 @@ if %errorlevel% == 6 goto about
 if %errorlevel% == 7 goto direct
 goto menu
 :home
-%browser% https://animetake.tv/
+%web% https://animetake.tv/
 goto menu
 :categories
 title Animetake - Categories
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                        ษอออออออออออออป
@@ -72,30 +64,25 @@ echo                                                        บ9. SuperPowerบ
 echo                                                        ศอออออออออออออผ
 choice /c 123456789 /n
 if %errorlevel% == 1 (goto list1)
-if %errorlevel% == 2 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Action)
-if %errorlevel% == 3 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Adventure)
-if %errorlevel% == 4 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Comedy)
-if %errorlevel% == 5 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Drama)
-if %errorlevel% == 6 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Game)
-if %errorlevel% == 7 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Isekai)
-if %errorlevel% == 8 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Sci-Fi)
-if %errorlevel% == 9 (%browser% https://animetake.tv/animelist/?genres%%5B%%5D=Super+Power)
+if %errorlevel% == 2 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Action)
+if %errorlevel% == 3 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Adventure)
+if %errorlevel% == 4 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Comedy)
+if %errorlevel% == 5 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Drama)
+if %errorlevel% == 6 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Game)
+if %errorlevel% == 7 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Isekai)
+if %errorlevel% == 8 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Sci-Fi)
+if %errorlevel% == 9 (%web% https://animetake.tv/animelist/?genres%%5B%%5D=Super+Power)
 
 goto menu
 :search
 title Animetake - Search
 echo.
 set /p "search=Search : "
-%browser% https://animetake.tv/search/?search=%search: =+%
+%web% https://animetake.tv/search/?search=%search: =+%
 goto menu
 :browser
 title Animetake - Browser
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                        ษออออออออออออป
@@ -106,19 +93,15 @@ echo                                                        บ2. Chrome   บ
 echo                                                        บ3. Opera GX บ
 echo                                                        ศออออออออออออผ
 choice /c 123 /n
-if %errorlevel% == 1 set "browser=start iexplore.exe"
-if %errorlevel% == 2 set "browser=start chrome.exe"
-if %errorlevel% == 3 set "browser=cd %LocalAppData%\Programs\Opera GX & start launcher.exe"
+if %errorlevel% == 1 set "browser=iexplore"
+if %errorlevel% == 2 set "browser=chrome"
+if %errorlevel% == 3 set "browser=operagx"
 call :editset
+call :loadset
 goto menu
 :theme
 title Animetake - Theme
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                      ษอออออออออออออออป
@@ -138,15 +121,11 @@ echo.
 echo.
 set /p "logocolor=[0m                                                      Color : "
 call :editset
+call :loadset
 goto logo
 :about
 title Animetake - About
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                        ษออออออออออออป
@@ -154,7 +133,7 @@ echo                                                        บ   ABOUT    บ
 echo                                                        ศออออออออออออผ
 echo.
 echo                                                    File name : Animetake.bat
-echo                                                      Version : 1.4
+echo                                                      Version : 1.6
 echo                                                File location : %0
 echo                                                      Made by : Baikil
 echo                                                       Github : https://github.com/baikil/animetake
@@ -167,16 +146,11 @@ goto menu
 :direct
 set /p "animename=Anime name : "
 set /p "episodenum=Episode : "
-%browser% https://animetake.tv/watch-online/%animename: =-%-episode-%episode%/
+%web% https://animetake.tv/watch-online/%animename: =-%-episode-%episode%/
 goto menu
 :list1
 title Animetake - List
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                      ษออออออออออออออออออป
@@ -209,11 +183,14 @@ goto menu
 :loadset
 cd %public%\animetake
 for /f "delims== tokens=1,2" %%G in (settings.txt) do set "%%G=%%H"
+if %browser% == iexplore (set "web=start iexplore.exe")
+if %browser% == chrome (set "web=start chrome.exe")
+if %browser% == operagx (set "web=cd %LocalAppData%\Programs\Opera GX & start launcher.exe")
 exit /b
 :makeset
 cd %public%\animetake
 echo logocolor=220>settings.txt
-echo browser=start chrome.exe>>settings.txt
+echo browser=chrome>>settings.txt
 exit /b
 :editset
 cd %public%\animetake
@@ -226,12 +203,7 @@ if defined var (set vartype=text) else (set vartype=num)
 exit /b
 :listbkcl
 title Animetake - List - Black Clover
-cls
-%logo1%
-%logo2%
-%logo3%
-%logo4%
-%logo5%
+%logo%
 echo.
 echo.
 echo                                                      ษออออออออออออออออออป
@@ -243,7 +215,7 @@ echo                                                      บ3. Back           บ
 echo                                                      ศออออออออออออออออออผ
 echo.
 choice /c 123 /n
-if %errorlevel% == 1 (%browser% )
+if %errorlevel% == 1 (%web% )
 if %errorlevel% == 2 (goto :listbkclep)
 if %errorlevel% == 3 (goto list1)
 :listbkclep
@@ -251,7 +223,7 @@ echo.
 set /p "episode=Episode : "
 call :vartype %episode%
 if %vartype% == text (goto :listbkclep)
-%browser% https://animetake.tv/watch-online/black-clover-episode-%episode%/
+%web% https://animetake.tv/watch-online/black-clover-episode-%episode%/
 goto menu
 
 ::To do :
