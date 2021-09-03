@@ -30,7 +30,7 @@ echo.
 echo.
 echo                                                        ษอออออออออออออป
 echo                                                        บ  Preparing  บ
-echo                                                        บ      [38;5;9m0%[0m     บ 
+echo                                                        บ      [38;5;9m0%%[0m       บ 
 echo                                                        ศอออออออออออออผ
 md %public%\animetake
 title Animetake installer - Installing... [33%]
@@ -39,7 +39,7 @@ echo.
 echo.
 echo                                                        ษอออออออออออออป
 echo                                                        บ Downloading บ
-echo                                                        บ     [38;5;208m33%[0m     บ 
+echo                                                        บ     [38;5;208m33%%[0m     บ 
 echo                                                        ศอออออออออออออผ
 powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/baikil/animetake/main/Animetake.bat','%public%\animetake\Animetake.bat')"
 powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/baikil/animetake/main/animetake.ico','%public%\animetake\animetake.ico')"
@@ -49,7 +49,7 @@ echo.
 echo.
 echo                                                        ษอออออออออออออป
 echo                                                        บ Finalising  บ
-echo                                                        บ     [38;5;220m66%[0m     บ 
+echo                                                        บ     [38;5;220m66%%[0m     บ 
 echo                                                        ศอออออออออออออผ
 set shortcutmaker="%temp%\shortcutmaker_%RANDOM%.vbs"
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %shortcutmaker%
@@ -67,9 +67,11 @@ echo.
 echo.
 echo                                                        ษอออออออออออออป
 echo                                                        บ  Installed  บ
-echo                                                        บ    [38;5;10m100%[0m     บ 
+echo                                                        บ    [38;5;10m100%%[0m     บ 
 echo                                                        ศอออออออออออออผ
 timeout /t 2 >nul
+set startapp=true
+goto exit
 :about
 title Animetake installer - About
 %logo%
@@ -108,4 +110,5 @@ echo                                                        บ   Goodbye   บ
 echo                                                        ศอออออออออออออผ
 echo.
 timeout /t 2 >nul
+if "%startapp%" == "true" (start %public%\animetake\Animetake.bat)
 exit
